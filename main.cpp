@@ -9,6 +9,8 @@
 
 using namespace std;
 
+void prog0();
+void prog0_main(const int[], int);
 void prog1();
 void prog2();
 void prog3();
@@ -22,7 +24,7 @@ void prog9();
 
 
 int main() {
-    prog9();
+    prog0();
     return 0;
 }
 
@@ -44,6 +46,10 @@ void prog9() {
         cout << m[3][i] << "   ";
     }
     cout << endl;
+    /* Answer
+        m[0][0] = 1   m[1][0] = 2   m[2][0] = 3
+        m[3][0] = 3   m[3][1] = 4   m[3][2] = 5
+     */
 }
 
 void prog8() {
@@ -56,18 +62,26 @@ void prog8() {
     *p1 = 3;
     p1 = 0;
     cout << *p2 << endl << p1;
+    /* Answer
+         *p2 = 3
+         p1 = 0x0
+     */
 }
 
 void prog7() {
     cout << prog7_main(5);
+    
 }
-
 int prog7_main(int i) {
     if ( i < 8) {
         return (prog7_main(++i) + prog7_main(++i));
     }
     else
         return 1;
+    /* Answer
+        prog7_00.jpg
+        prog7_01.jpg
+     */
 }
 
 void prog6() {
@@ -77,11 +91,18 @@ void prog6() {
             a = a-b;
         else b = b-a;
     cout << a;
+    /* Answer
+        a = 1
+    */
 }
 
 void prog5() {
     int a[3][3] = { {1,2,3}, {4, 5, 6}, {7, 8, 9} };
-    cout << a[1][2] << a[2][1];
+    cout << a[1][2] << endl << a[2][1];
+    /* Answer
+        a[1][2] = 6
+        a[2][1] = 8
+     */
 }
 
 void prog4() {
@@ -91,6 +112,9 @@ void prog4() {
     else if (n = 4) n = 6;
     else if (n = 6) n = 8;
     cout << n;
+    /* Answer
+         n = 4
+     */
 }
 
 void prog3 () {
@@ -100,16 +124,18 @@ void prog3 () {
     q = x + 5; // x[5]
     *(p+1) = 10; // x[2]
     cout << q-p;
-    *x = 1;
-    cout << x[0];
+    /* Answer
+        q-p = 4
+     */
 }
 
 void prog2() {
     int i = 10, j = 6;
-    //    int *s, *t;
+//    int *s, *t;
 //    *s = &i;
 //    *t = &j;
 //    cout << 10 * (*s / *t) + 7;
+//      這題有問題
 }
 
 void prog1() {
@@ -121,4 +147,25 @@ void prog1() {
     *x = 3;
     *y = 4;
     cout << a << b << *x << *y;
+    /* Answer
+        a = 1
+        b = 4
+        c = 4
+        d = 4
+     */
+}
+
+void prog0() {
+    int a[] = {1,3,5,7,9,11};
+    prog0_main(a, 5);
+}
+void prog0_main(const int b[], int c) {
+    if(c > 0) {
+        prog0_main(&b[1], c - 1);
+        cout << b[0];
+    }
+    /* Answer
+         97531
+         prog0.jpeg
+     */
 }
